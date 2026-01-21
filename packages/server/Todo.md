@@ -8,3 +8,18 @@
 - [x] Server klasörü altındaki dosyaları tara ve bulduğun metinleri dil tanım dosyalarına ekle
 - [x] Kod içinde dil anahtarlarını kullan
 - [x] i18n kütüphanesini, dili gelen requestin içinden cookie ve veya headerlar yardımıyla anlayıp otomatik değiştireceği şekilde ayarla
+
+## Supabase Veri Saklama Katmanı
+
+- [ ] Supabase kullanarak veri saklama katmanı ekle
+   - [ ] package.json'a @supabase/supabase-js paketini ekle
+   - [ ] .env.example dosyasına SUPABASE_URL ve SUPABASE_KEY değişkenlerini ekle
+   - [ ] Supabase client'ı initialize eden utils/supabase.ts dosyası oluştur
+   - [ ] conversations tablosunun şemasını Supabase'de oluştur (id, conversation_id, last_response_id, created_at, updated_at)
+   - [ ] messages tablosunun şemasını Supabase'de oluştur (id, conversation_id, user_prompt, ai_response, created_at)
+   - [ ] repositories/conversations.ts dosyasını Supabase entegrasyonu ile güncelleştir
+   - [ ] repositories/messages.ts dosyası oluştur (mesaj geçmişini saklama için)
+   - [ ] types/database.ts dosyası oluştur (Supabase table type tanımları için)
+   - [ ] services/chatService.ts'yi güncelleştir (mesaj geçmişini Supabase'e kaydetmek için)
+   - [ ] Sohbet geçmişini getiren yeni endpoint ekle (/api/conversations/:conversationId/messages)
+   - [ ] Error handling ve validation kurallarını dil dosyalarına ekle
