@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import router from './routes';
+import { initI18n } from './utils/i18n';
 
 dotenv.config();
 
@@ -10,6 +11,11 @@ app.use('/api', router);
 
 const port = process.env.PORT || 3000;
 
-app.listen(port, () => {
-   console.log(`Server listening at http://localhost:${port}`);
-});
+const start = async () => {
+   await initI18n();
+   app.listen(port, () => {
+      console.log(`Sunucu dinleme durumunda: http://localhost:${port}`);
+   });
+};
+
+start();

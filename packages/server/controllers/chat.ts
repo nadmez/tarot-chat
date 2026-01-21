@@ -1,14 +1,15 @@
 import { chatService } from '../services/chatService';
 import type { Request, Response } from 'express';
 import { z } from 'zod';
+import { i18n } from '../utils/i18n';
 
 const chatSchema = z.object({
    prompt: z
       .string()
       .trim()
-      .min(1, 'Prompt cannot be empty')
-      .max(1000, 'Prompt is too long (max 1000 characters)'),
-   conversationId: z.uuid(),
+      .min(1, i18n.t('server.errors.emptyPrompt'))
+      .max(1000, i18n.t('server.errors.promptTooLong')),
+   conversationId: z.string().uuid(),
 });
 
 const sendMessage = async (req: Request, res: Response) => {
@@ -19,10 +20,9 @@ const sendMessage = async (req: Request, res: Response) => {
       }
       const { prompt, conversationId } = parsedResult.data;
       const response = await chatService.sendMessage(prompt, conversationId);
-      // console.log('OpenAI Response:', JSON.stringify(response, null, 4));
       res.json({ response: response.message });
    } catch (error) {
-      res.status(500).json({ error: 'Failed to generate a response' });
+      res.status(500).json({ error: i18n.t('server.errors.failedResponse') });
    }
 };
 
