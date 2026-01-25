@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Button } from './components/ui/button';
+import ChatBot from './components/chatBot';
+
 function App() {
    const [message, setMessage] = useState('');
 
@@ -11,18 +12,15 @@ function App() {
          .catch((err) => console.error('Error fetching message:', err));
    }, []);
 
-   if (message) {
-      return (
-         <div className="p-4">
-            <p className="font-bold text-3xl">{message}</p>
-            <Button className="mt-4" variant="default">
-               Click Me!
-            </Button>
-         </div>
-      );
+   if (!message) {
+      return <p>No message available.</p>;
    }
-
-   return <>No message available.</>;
+   return (
+      <div className="p-4">
+         <p className="font-bold text-3xl">{message}</p>
+         <ChatBot />
+      </div>
+   );
 }
 
 export default App;
