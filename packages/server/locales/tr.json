@@ -1,7 +1,7 @@
 {
    "server": {
       "listening": "Sunucu dinleme durumunda: http://localhost:{{port}}",
-      "helloMessage": "Sunucudan Merhaba!",
+      "helloMessage": "Sunucudan Yeniden Merhaba",
       "errors": {
          "invalidPrompt": "Geçersiz istek: {{message}}",
          "emptyPrompt": "İstem boş olamaz",
