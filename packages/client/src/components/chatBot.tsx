@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
+import ReactMarkdown from 'react-markdown';
+
 import { Button } from './ui/button';
 import { FaArrowUp } from 'react-icons/fa';
 import { useRef, useState } from 'react';
@@ -9,23 +11,32 @@ type FormData = {
 };
 
 type ChatResponse = {
-   response: string;
+   message: string;
+};
+
+type Message = {
+   content: string;
+   role: 'user' | 'bot';
 };
 
 const ChatBot = () => {
-   const [messages, setMessages] = useState<string[]>([]);
+   const [messages, setMessages] = useState<Message[]>([]);
    const conversationId = useRef<string | undefined>(undefined);
+
    const { register, handleSubmit, reset, formState } = useForm<FormData>();
 
    const onSubmitHandler = async ({ prompt }: FormData) => {
-      setMessages((prev) => [...prev, prompt]);
+      setMessages((prev) => [...prev, { content: prompt, role: 'user' }]);
       reset();
+
       if (!conversationId.current) conversationId.current = crypto.randomUUID();
+
       const { data } = await axios.post<ChatResponse>('/api/chat', {
          prompt,
-         conversationId: conversationId.current,
+         conversationId: conversationId?.current,
       });
-      setMessages((prev) => [...prev, data.response]);
+
+      setMessages((prev) => [...prev, { content: data.message, role: 'bot' }]);
    };
 
    const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
@@ -36,24 +47,27 @@ const ChatBot = () => {
    };
 
    return (
-      <div className="flex flex-col gap-4">
-         <div className="flex flex-col gap-2 max-h-96 overflow-y-auto p-4 border-2 rounded-3xl">
+      <div className="chat-container flex flex-col gap-3">
+         <div className="message-container flex flex-col gap-2 max-h-[70vh] overflow-y-auto p-4 border-2 rounded-3xl">
             {messages.map((msg, index) => (
-               <div
+               <p
                   key={index}
-                  className={`p-2 rounded-lg ${
-                     index % 2 === 0
-                        ? 'bg-blue-100 self-end'
-                        : 'bg-gray-200 self-start'
+                  className={`px-3 py-1 rounded-xl ${
+                     msg.role === 'user'
+                        ? 'self-end bg-blue-400 text-white'
+                        : 'self-start bg-gray-200 text-black'
                   }`}
                >
-                  {msg}
-               </div>
+                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+               </p>
             ))}
          </div>
          <form
-            className="flex flex-col gap-2 items-end border-2 p-4 rounded-3xl"
-            onSubmit={handleSubmit(onSubmitHandler)}
+            className="prompt-form flex flex-col gap-2 items-end border-2 p-4 rounded-3xl"
+            onSubmit={(e: React.FormEvent<HTMLFormElement>) => {
+               e.preventDefault();
+               handleSubmit(onSubmitHandler)();
+            }}
          >
             <textarea
                {...register('prompt', {

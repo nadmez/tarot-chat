@@ -17,8 +17,8 @@ const sendMessage = async (
    const response = await client.responses.create({
       model: 'gpt-4o-mini',
       input: prompt,
-      max_output_tokens: 256,
-      temperature: 0.4,
+      max_output_tokens: 100_000,
+      temperature: 0.8,
       previous_response_id: getLastConversationId(conversationId),
    });
 

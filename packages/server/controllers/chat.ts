@@ -20,7 +20,7 @@ const sendMessage = async (req: Request, res: Response) => {
       }
       const { prompt, conversationId } = parsedResult.data;
       const response = await chatService.sendMessage(prompt, conversationId);
-      res.json({ response: response.message });
+      res.json({ message: response.message });
    } catch (error) {
       res.status(500).json({ error: i18n.t('server.errors.failedResponse') });
    }
