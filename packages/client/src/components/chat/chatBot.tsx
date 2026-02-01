@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import ReactMarkdown from 'react-markdown';
 import { useTranslation } from 'react-i18next';
 
-import { Button } from './ui/button';
+import { Button } from '../ui/button';
 import BotTypingSpinner from './botTypingSpinner';
 import { FaArrowUp } from 'react-icons/fa';
 import { useEffect, useRef, useState } from 'react';
