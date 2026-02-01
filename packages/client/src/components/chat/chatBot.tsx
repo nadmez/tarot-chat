@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { useForm } from 'react-hook-form';
 import ReactMarkdown from 'react-markdown';
-import { useTranslation } from 'react-i18next';
 
 import { Button } from '../ui/button';
 import BotTypingSpinner from './botTypingSpinner';

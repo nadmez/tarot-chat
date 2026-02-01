@@ -23,3 +23,16 @@
    - [ ] services/chatService.ts'yi güncelleştir (mesaj geçmişini Supabase'e kaydetmek için)
    - [ ] Sohbet geçmişini getiren yeni endpoint ekle (/api/conversations/:conversationId/messages)
    - [ ] Error handling ve validation kurallarını dil dosyalarına ekle
+
+## JSON Web Token (JWT) Otantikasyonu
+
+- [ ] JWT kullanarak otantikasyon yapılması
+   - [ ] package.json'a jsonwebtoken paketini ekle
+   - [ ] .env.example dosyasına JWT_SECRET değişkenini ekle
+   - [ ] utils/jwt.ts dosyası oluştur (token oluşturma ve doğrulama fonksiyonları için)
+   - [ ] Kullanıcı login endpoint'i ekle (/api/auth/login)
+   - [ ] Token refresh endpoint'i ekle (/api/auth/refresh)
+   - [ ] JWT middleware oluştur ve korunan route'lara ekle
+   - [ ] Token payload'ına user id ve rol bilgisini ekle
+   - [ ] Token expiration süresi belirle (access token: 15 dakika, refresh token: 7 gün)
+   - [ ] Dil dosyalarına JWT ile ilgili hata mesajlarını ekle
