@@ -1,4 +1,4 @@
-export type FormData = {
+export type ChatFormData = {
    prompt: string;
 };
 
