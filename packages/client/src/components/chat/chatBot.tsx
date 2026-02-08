@@ -4,6 +4,14 @@ import BotTypingSpinner from '@/components/chat/botTypingSpinner';
 import { useRef, useState } from 'react';
 import ChatMessages from '@/components/chat/chatMessages';
 import ChatInput from '@/components/chat/chatInput';
+import popSound from '@/assets/pop.mp3';
+import notificationSound from '@/assets/notification.mp3';
+
+const popAudio = new Audio(popSound);
+popAudio.volume = 0.2;
+
+const notificationAudio = new Audio(notificationSound);
+notificationAudio.volume = 0.2;
 
 import type { Message, ChatFormData, ChatResponse } from '@/types';
 
@@ -18,6 +26,7 @@ const ChatBot = () => {
          setMessages((prev) => [...prev, { content: prompt, role: 'user' }]);
          setIsBotTyping(true);
          setError(null);
+         popAudio.play();
 
          if (!conversationId.current)
             conversationId.current = crypto.randomUUID();
@@ -31,6 +40,7 @@ const ChatBot = () => {
             ...prev,
             { content: data.message, role: 'bot' },
          ]);
+         notificationAudio.play();
       } catch (error) {
          console.error(error);
          setError('Something went wrong! Please try again later.');
