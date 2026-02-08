@@ -14,6 +14,6 @@
 
 ## Bileşen Geliştirme
 
-- [ ] Chat arayüzü bileşenleri geliştir
+- [x] Chat arayüzü bileşenleri geliştir
 - [ ] Responsive tasarım ekle
 - [ ] Tema (light/dark mode) desteği ekle
