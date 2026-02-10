@@ -1,4 +1,4 @@
-# chatbot
+# tarot-chat
 
 To install dependencies:
 
