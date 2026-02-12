@@ -36,3 +36,11 @@
    - [ ] Token payload'ına user id ve rol bilgisini ekle
    - [ ] Token expiration süresi belirle (access token: 15 dakika, refresh token: 7 gün)
    - [ ] Dil dosyalarına JWT ile ilgili hata mesajlarını ekle
+
+## Model Geliştirmeleri
+
+- [ ] `services/chatService.ts` dosyasında kullanılan `gpt-4o-mini` modelini daha gelişmiş bir OpenAI modeline (örneğin `gpt-4o`) yükselt.
+
+## Veri Yönetimi
+
+- [ ] Tüm tarot kartı tanımlarının (isim, düz/ters anlamları, görsel referansları vb.) merkezi bir `.json` dosyası altında toplanması

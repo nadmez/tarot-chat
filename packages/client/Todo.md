@@ -17,3 +17,9 @@
 - [x] Chat arayüzü bileşenleri geliştir
 - [ ] Responsive tasarım ekle
 - [ ] Tema (light/dark mode) desteği ekle
+
+## Görsel ve Animasyon Geliştirmeleri
+
+- [ ] Tarot kartı görsel alt yapısının kurulması
+   - [ ] Tüm tarot kartı resimlerinin asset olarak projeye eklenmesi
+   - [ ] Kartların ekranda dönel (rotational) bir biçimde hareket ettirilebilmesi için gerekli animasyon alt yapısının (framer-motion, gsap vb.) kurulması ve örnek bir bileşen oluşturulması
