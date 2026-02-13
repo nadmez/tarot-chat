@@ -1,9 +1,8 @@
 import { conversationsRepository } from '../repositories/conversations';
 import OpenAI from 'openai';
-import fs from 'fs';
-import path from 'path';
 import type { ChatResponse } from '../types/chat';
-import template from '../prompts/chatbox.txt';
+import template from '../prompts/tarot.txt';
+import { cardService } from './cardService';
 
 const { getLastConversationId, setLastConversationId } =
    conversationsRepository;
@@ -13,19 +12,18 @@ const client = new OpenAI({
    apiKey: process.env.OPENAI_API_KEY,
 });
 
-const parkInfo = fs.readFileSync(
-   path.join(__dirname, '..', 'prompts', 'WonderWorld.md'),
-   'utf-8'
-);
-
-const instructions = template
-   .replace('{park_info}', parkInfo)
-   .replace('{today}', new Date().toDateString());
-
 const sendMessage = async (
    prompt: string,
    conversationId: string
 ): Promise<ChatResponse> => {
+   // 3 rastgele kart çek ve JSON olarak formatla
+   const cards = cardService.getRandomCards(3);
+   const cardInfo = JSON.stringify(cards, null, 2);
+
+   const instructions = template
+      .replace('{{cardInfo}}', cardInfo)
+      .replace('{{today}}', new Date().toDateString());
+
    const response = await client.responses.create({
       model: 'gpt-4o-mini',
       input: prompt,
