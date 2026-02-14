@@ -26,7 +26,7 @@ const ChatInput = ({ onSubmit, isLoading = false }: ChatInputProps) => {
 
    return (
       <form
-         className="prompt-form flex flex-col gap-2 items-end border-2 p-4 rounded-3xl"
+         className="prompt-form flex items-center gap-3 border-2 p-2 px-4 rounded-full mb-4 shadow-sm"
          onSubmit={handleSubmit(formSubmitHandler)}
       >
          <textarea
@@ -35,7 +35,8 @@ const ChatInput = ({ onSubmit, isLoading = false }: ChatInputProps) => {
                validate: (value) => value.trim().length > 0,
             })}
             placeholder="Ask me anything..."
-            className="w-full border-0 focus:outline-0 resize-none"
+            className="w-full border-0 focus:outline-0 resize-none py-1.5 leading-tight"
+            rows={1}
             maxLength={1000}
             onKeyDown={handleKeyDown}
             disabled={isLoading}
@@ -43,7 +44,8 @@ const ChatInput = ({ onSubmit, isLoading = false }: ChatInputProps) => {
          ></textarea>
          <Button
             disabled={!formState.isValid || isLoading}
-            className="rounded-full w-9 h-9"
+            className="rounded-full w-10 h-10 shrink-0"
+            size="icon"
          >
             <FaArrowUp />
          </Button>

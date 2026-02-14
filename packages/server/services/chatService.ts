@@ -28,7 +28,7 @@ const sendMessage = async (
       model: 'gpt-4o-mini',
       input: prompt,
       instructions,
-      max_output_tokens: 100_000,
+      // max_output_tokens: 100_000,
       temperature: 0.8,
       previous_response_id: getLastConversationId(conversationId),
    });
@@ -38,6 +38,7 @@ const sendMessage = async (
    return {
       message: response.output_text,
       id: response.id,
+      cards,
    };
 };
 
