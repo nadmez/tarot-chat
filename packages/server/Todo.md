@@ -11,10 +11,10 @@
 
 ## Supabase Veri Saklama Katmanı
 
-- [ ] Supabase kullanarak veri saklama katmanı ekle
-   - [ ] package.json'a @supabase/supabase-js paketini ekle
-   - [ ] .env.example dosyasına SUPABASE_URL ve SUPABASE_KEY değişkenlerini ekle
-   - [ ] Supabase client'ı initialize eden utils/supabase.ts dosyası oluştur
+- [x] Supabase kullanarak veri saklama katmanı ekle
+   - [x] package.json'a @supabase/supabase-js paketini ekle
+   - [x] .env.example dosyasına SUPABASE_URL ve SUPABASE_KEY değişkenlerini ekle
+   - [x] Supabase client'ı initialize eden utils/supabase.ts dosyası oluştur
    - [ ] conversations tablosunun şemasını Supabase'de oluştur (id, conversation_id, last_response_id, created_at, updated_at)
    - [ ] messages tablosunun şemasını Supabase'de oluştur (id, conversation_id, user_prompt, ai_response, created_at)
    - [ ] repositories/conversations.ts dosyasını Supabase entegrasyonu ile güncelleştir
