@@ -15,8 +15,8 @@
    - [x] package.json'a @supabase/supabase-js paketini ekle
    - [x] .env.example dosyasına SUPABASE_URL ve SUPABASE_KEY değişkenlerini ekle
    - [x] Supabase client'ı initialize eden utils/supabase.ts dosyası oluştur
-   - [ ] conversations tablosunun şemasını Supabase'de oluştur (id, conversation_id, last_response_id, created_at, updated_at)
-   - [ ] messages tablosunun şemasını Supabase'de oluştur (id, conversation_id, user_prompt, ai_response, created_at)
+   - [x] conversations tablosunun şemasını Supabase'de oluştur (id, conversation_id, last_response_id, created_at, updated_at)
+   - [x] messages tablosunun şemasını Supabase'de oluştur (id, conversation_id, user_prompt, ai_response, created_at)
    - [ ] repositories/conversations.ts dosyasını Supabase entegrasyonu ile güncelleştir
    - [ ] repositories/messages.ts dosyası oluştur (mesaj geçmişini saklama için)
    - [ ] types/database.ts dosyası oluştur (Supabase table type tanımları için)

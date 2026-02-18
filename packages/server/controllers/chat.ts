@@ -9,7 +9,7 @@ const chatSchema = z.object({
       .trim()
       .min(1, i18n.t('server.errors.emptyPrompt'))
       .max(1000, i18n.t('server.errors.promptTooLong')),
-   conversationId: z.string().uuid(),
+   conversationId: z.uuid(),
 });
 
 const sendMessage = async (req: Request, res: Response) => {
