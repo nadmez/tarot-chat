@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { supabase } from '@/utils/supabase';
 import type { User } from '@supabase/supabase-js';
 
 import ChatBot from '@/components/chat/chatBot';

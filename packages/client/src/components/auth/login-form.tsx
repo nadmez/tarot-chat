@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { cn } from '@/lib/utils';
+import { cn } from '@/utils/tailwind';
 import { createClient } from '@/lib/client';
 import { Button } from '@/components/ui/button';
 import {
