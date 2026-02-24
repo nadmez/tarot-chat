@@ -4,10 +4,10 @@ import { supabase } from '@/utils/supabase';
 import type { User } from '@supabase/supabase-js';
 
 import ChatBot from '@/components/chat/chatBot';
-import Login from '@/components/auth/Login';
-import SignUp from '@/components/auth/SignUp';
-import ForgotPassword from '@/components/auth/ForgotPassword';
-import ResetPassword from '@/components/auth/ResetPassword';
+import { LoginForm } from '@/components/auth/login-form';
+import { SignUpForm } from '@/components/auth/sign-up-form';
+import { ForgotPasswordForm } from '@/components/auth/forgot-password-form';
+import { UpdatePasswordForm } from '@/components/auth/update-password-form';
 
 function App() {
    const [user, setUser] = useState<User | null>(null);
@@ -16,10 +16,16 @@ function App() {
       <BrowserRouter>
          <div className="p-4 h-screen bg-transparent">
             <Routes>
-               <Route path="/login" element={<Login />} />
-               <Route path="/signup" element={<SignUp />} />
-               <Route path="/forgot" element={<ForgotPassword />} />
-               <Route path="/reset" element={<ResetPassword />} />
+               <Route path="/login" element={<LoginForm />} />
+               <Route path="/sign-up" element={<SignUpForm />} />
+               <Route
+                  path="/forgot-password"
+                  element={<ForgotPasswordForm />}
+               />
+               <Route
+                  path="/update-password"
+                  element={<UpdatePasswordForm />}
+               />
                <Route
                   path="/chat"
                   element={
