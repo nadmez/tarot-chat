@@ -1,6 +1,4 @@
-import { useEffect, useState } from 'react';
 import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import type { User } from '@supabase/supabase-js';
 
 import ChatBot from '@/components/chat/chatBot';
 import { LoginForm } from '@/components/auth/login-form';
@@ -9,8 +7,6 @@ import { ForgotPasswordForm } from '@/components/auth/forgot-password-form';
 import { UpdatePasswordForm } from '@/components/auth/update-password-form';
 
 function App() {
-   const [user, setUser] = useState<User | null>(null);
-
    return (
       <BrowserRouter>
          <div className="p-4 h-screen bg-transparent">
@@ -25,16 +21,8 @@ function App() {
                   path="/update-password"
                   element={<UpdatePasswordForm />}
                />
-               <Route
-                  path="/chat"
-                  element={
-                     user ? <ChatBot /> : <Navigate to="/login" replace />
-                  }
-               />
-               <Route
-                  path="*"
-                  element={<Navigate to={user ? '/chat' : '/login'} replace />}
-               />
+               <Route path="/chat" element={<ChatBot />} />
+               <Route path="*" element={<Navigate to={'/login'} replace />} />
             </Routes>
          </div>
       </BrowserRouter>

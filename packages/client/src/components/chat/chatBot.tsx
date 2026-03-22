@@ -1,12 +1,13 @@
 import axios from 'axios';
 
 import BotTypingSpinner from '@/components/chat/botTypingSpinner';
-import { useRef, useState } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import ChatMessages from '@/components/chat/chatMessages';
 import ChatInput from '@/components/chat/chatInput';
 import popSound from '@/assets/pop.mp3';
 import notificationSound from '@/assets/notification.mp3';
 import { HelpCircle } from 'lucide-react';
+import { createClient } from '@/lib/client';
 
 const popAudio = new Audio(popSound);
 popAudio.volume = 0.2;
@@ -17,6 +18,18 @@ notificationAudio.volume = 0.2;
 import type { Message, ChatFormData, ChatResponse, TarotCard } from '@/types';
 
 const ChatBot = () => {
+   useEffect(() => {
+      const checkAuth = async () => {
+         const client = createClient();
+         const { error } = await client.auth.getUser();
+
+         if (error) {
+            location.href = '/login';
+         }
+      };
+      checkAuth();
+   }, []);
+
    const [messages, setMessages] = useState<Message[]>([]);
    const conversationId = useRef<string | undefined>(undefined);
    const [isBotTyping, setIsBotTyping] = useState(false);

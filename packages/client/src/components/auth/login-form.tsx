@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { cn } from '@/utils/tailwind';
 import { createClient } from '@/lib/client';
@@ -23,6 +23,17 @@ export function LoginForm({
    const [isLoading, setIsLoading] = useState(false);
    const supabase = createClient();
 
+   useEffect(() => {
+      const checkAuth = async () => {
+         const { error } = await supabase.auth.getUser();
+
+         if (error) {
+            location.href = '/login';
+         }
+      };
+      checkAuth();
+   }, []);
+
    const handleLogin = async (e: React.FormEvent) => {
       e.preventDefault();
       setIsLoading(true);
@@ -35,7 +46,7 @@ export function LoginForm({
          });
          if (error) throw error;
          // Update this route to redirect to an authenticated route. The user already has an active session.
-         location.href = '/protected';
+         location.href = '/chat';
       } catch (error: unknown) {
          setError(error instanceof Error ? error.message : 'An error occurred');
       } finally {
