@@ -4,12 +4,10 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "concurrently -n server,client -c cyan,green \"npm run dev -w server\" \"npm run dev -w client\"",
     "format": "prettier --write .",
     "prepare": "husky"
   },
   "devDependencies": {
-    "concurrently": "^9.2.1",
     "husky": "^9.1.7",
     "lint-staged": "^16.2.7",
     "prettier": "^3.8.0"
