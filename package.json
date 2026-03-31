@@ -1,21 +1,21 @@
 {
-  "name": "chatbot",
-  "version": "0.0.0",
-  "type": "module",
-  "private": true,
-  "scripts": {
-    "format": "prettier --write .",
-    "prepare": "husky"
-  },
-  "devDependencies": {
-    "husky": "^9.1.7",
-    "lint-staged": "^16.2.7",
-    "prettier": "^3.8.0"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
-  },
-  "workspaces": [
-    "packages/*"
-  ]
+   "name": "chatbot",
+   "version": "0.0.0",
+   "type": "module",
+   "private": true,
+   "scripts": {
+      "format": "prettier --write .",
+      "prepare": "husky install || true"
+   },
+   "devDependencies": {
+      "husky": "^9.1.7",
+      "lint-staged": "^16.2.7",
+      "prettier": "^3.8.0"
+   },
+   "peerDependencies": {
+      "typescript": "^5"
+   },
+   "workspaces": [
+      "packages/*"
+   ]
 }
