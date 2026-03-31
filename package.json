@@ -5,7 +5,8 @@
    "private": true,
    "scripts": {
       "format": "prettier --write .",
-      "prepare": "husky install || true"
+      "prepare": "husky install || true",
+      "build:server": "npm run build -w server"
    },
    "devDependencies": {
       "husky": "^9.1.7",
