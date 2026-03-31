@@ -1,15 +1,26 @@
 # server
 
-To install dependencies:
+Express tabanlı API. Node 20+ ve npm ile çalışır.
+
+## Kurulum
+
+Monorepo kökünden:
 
 ```bash
-bun install
+npm install
 ```
 
-To run:
+Yalnızca bu paket için geliştirme:
 
 ```bash
-bun run index.ts
+npm run dev -w server
 ```
 
-This project was created using `bun init` in bun v1.3.5. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+## Üretim
+
+```bash
+npm run build -w server
+npm start -w server
+```
+
+`.env` dosyası için `.env.example` dosyasına bakın.

@@ -1,6 +1,6 @@
 import { createClient } from '@supabase/supabase-js';
 
-// ensure environment variables are loaded (dotenv already configured in index.ts)
+// Requires `import 'dotenv/config'` before any module that imports this file (see index.ts).
 const supabaseUrl = process.env.SUPABASE_URL;
 const supabaseKey = process.env.SUPABASE_KEY;
 

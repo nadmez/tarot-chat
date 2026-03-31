@@ -1,15 +1,33 @@
 # tarot-chat
 
-To install dependencies:
+Monorepo: `packages/server` (Express API) ve `packages/client` (Vite + React).
+
+## Kurulum
+
+Repoyun kökünde:
 
 ```bash
-bun install
+npm install
 ```
 
-To run:
+## Geliştirme
+
+Sunucu ve istemciyi birlikte çalıştırmak için:
 
 ```bash
-bun run index.ts
+npm run dev
 ```
 
-This project was created using `bun init` in bun v1.3.5. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+Ayrı ayrı:
+
+```bash
+npm run dev -w server
+npm run dev -w client
+```
+
+## Üretim derlemesi
+
+```bash
+npm run build -w server
+npm run build -w client
+```

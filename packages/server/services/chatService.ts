@@ -1,8 +1,15 @@
+import { readFileSync } from 'node:fs';
+import { dirname, join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { conversationsRepository } from '../repositories/conversations';
 import OpenAI from 'openai';
 import type { ChatResponse } from '../types/chat';
-import template from '../prompts/tarot.txt';
 import { cardService } from './cardService';
+
+const template = readFileSync(
+   join(dirname(fileURLToPath(import.meta.url)), '../prompts/tarot.txt'),
+   'utf-8'
+);
 
 const { getLastConversationId, setLastConversationId } =
    conversationsRepository;
